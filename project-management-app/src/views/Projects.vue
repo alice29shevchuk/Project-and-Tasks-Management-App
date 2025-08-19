@@ -9,6 +9,8 @@ import { useProjectsStore } from '@/stores/projects'
 const router = useRouter()
 const projectsStore = useProjectsStore()
 
+const FILTER_STORAGE_KEY = 'projects_filters';
+
 const filters = ref({
   search: '',
   status: '' as '' | 'active' | 'completed'
@@ -23,10 +25,15 @@ const filteredProjects = computed(() => {
 })
 
 const handleFilterChange = async() => {
+  localStorage.setItem(FILTER_STORAGE_KEY, JSON.stringify(filters.value))
   await projectsStore.loadProjects()
 }
 
-onMounted(async() => {
+onMounted(async () => {
+  const savedFilters = localStorage.getItem(FILTER_STORAGE_KEY)
+  if (savedFilters) {
+    Object.assign(filters.value, JSON.parse(savedFilters))
+  }
   await projectsStore.loadProjects()
 })
 
@@ -36,6 +43,7 @@ const viewDetails = (id: number) => {
 
 const showModal = ref(false)
 const addNewProject = () => showModal.value = true
+
 const handleProjectAdded = async() => {
   showModal.value = false
   await projectsStore.loadProjects()

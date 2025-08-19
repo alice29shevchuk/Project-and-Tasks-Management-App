@@ -33,7 +33,7 @@
       "assignee": "Іван Петров",
       "status": "in-progress",
       "dueDate": "2023-05-20",
-      "order": 3
+      "order": 4
     },
     {
       "id": "2",
@@ -42,7 +42,7 @@
       "assignee": "Олена Сидорова",
       "status": "in-progress",
       "dueDate": "2023-05-25",
-      "order": 4
+      "order": 3
     },
     {
       "id": "3",
