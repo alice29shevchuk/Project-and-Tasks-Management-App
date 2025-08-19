@@ -3,6 +3,8 @@ import { ref, computed } from 'vue'
 import type { TaskForm } from '@/types/task'
 import { useRoute } from 'vue-router'
 import { useTasksStore } from '@/stores/tasks'
+import { useProjectsStore } from '@/stores/projects'
+import { useToastStore } from '@/stores/toast'
 
 const emit = defineEmits(['cancel', 'task-added'])
 
@@ -12,6 +14,8 @@ const route = useRoute();
 const projectId = Number(route.params.id);
 
 const tasksStore = useTasksStore();
+const projectsStore = useProjectsStore();
+const toast = useToastStore();
 
 const form = ref<TaskForm>({
   title: '',
@@ -64,6 +68,9 @@ const submitForm = async () => {
     const newTaskData = { ...form.value, order: maxOrder + 1 }
     await tasksStore.createNewTask(newTaskData)
 
+    await projectsStore.updateExistProject(projectId, { taskCount: tasksStore.tasks.length })
+
+    toast.showToast('Завдання успішно додано!');
     emit('task-added')
     form.value = { title: '', assignee: '', status: 'todo', dueDate: today, projectId: projectId }
   } catch (err) {

@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useProjectsStore } from '@/stores/projects'
+import { useToastStore } from '@/stores/toast'
 
 const emit = defineEmits(['cancel', 'project-added'])
 
-const projectsStore = useProjectsStore()
+const projectsStore = useProjectsStore();
+const toast = useToastStore();;
 
 const form = ref({
   name: '',
@@ -25,6 +27,8 @@ const submitForm = async () => {
     await projectsStore.addProject({
       ...form.value,
     })
+
+    toast.showToast('Проект успішно додан!');
     emit('project-added')
     form.value = { name: '', description: '', taskCount: 0, status: 'active' }
   } catch (err) {

@@ -11,3 +11,5 @@ export interface Project {
     name: string
     description: string
   }
+
+  export type ProjectUpdate = Partial<Pick<Project, 'name' | 'description' | 'taskCount' | 'status'>>

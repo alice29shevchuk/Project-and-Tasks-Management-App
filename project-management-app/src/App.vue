@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppToast from '@/components/common/AppToast.vue'
 </script>
 
 <template>
@@ -12,6 +13,7 @@
     </header>
     <main class="p-4">
       <router-view />
+      <AppToast/>
     </main>
   </div>
 </template>

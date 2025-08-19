@@ -1,5 +1,5 @@
 import apiClient from './http'
-import type { Project, ProjectForm } from '@/types/project'
+import type { Project, ProjectForm, ProjectUpdate } from '@/types/project'
 
 export const fetchProjects = async (): Promise<Project[]> => {
     try {
@@ -36,7 +36,7 @@ export const createProject = async (projectData: ProjectForm): Promise<Project> 
   }
 }
 
-export const updateProject = async (id: number, projectData: Partial<ProjectForm>): Promise<Project> => {
+export const updateProject = async (id: number, projectData: ProjectUpdate): Promise<Project> => {
   try {
     const response = await apiClient.patch(`/projects/${id}`, projectData)
     return response.data

@@ -5,6 +5,7 @@ import type { Task } from '@/types/task';
 import { useRoute } from 'vue-router';
 import TaskModal from '@/components/tasks/TaskModal.vue';
 import { useTasksStore } from '@/stores/tasks';
+import { useProjectsStore } from '@/stores/projects'
 
 const loading = ref(false);
 const tasks = ref<Task[]>([]);
@@ -15,6 +16,7 @@ const route = useRoute();
 const projectId = Number(route.params.id);
 
 const tasksStore = useTasksStore()
+const projectsStore = useProjectsStore()
 
 const loadTasks = async () => {
   loading.value = true;
@@ -51,6 +53,7 @@ const onColumnChange = async (
   }
   
   await loadTasks();
+  await updateProjectStatusIfCompleted();
 };
 
 const onDragEnd = async () => {
@@ -68,6 +71,7 @@ const onDragEnd = async () => {
   try {
     await tasksStore.updateTaskOrder(newOrder);
     await loadTasks();
+    await updateProjectStatusIfCompleted();
   } catch (error) {
     console.error('Ошибка при сохранении порядка:', error);
     await loadTasks();
@@ -86,10 +90,29 @@ function formatStatus(status: string) {
 }
 
 const showModal = ref(false);
+
 const handleTaskAdded = async() => {
     showModal.value = false;
     await loadTasks();
 };
+
+const updateProjectStatusIfCompleted = async () => {
+  if (!tasks.value.length) return
+
+  const allDone = tasks.value.every(t => t.status === 'done')
+  const newStatus = allDone ? 'completed' : 'active'
+  const newTaskCount = tasks.value.length
+
+  try {
+    await projectsStore.updateExistProject(projectId, {
+      status: newStatus,
+      taskCount: newTaskCount
+    })
+  } catch (err) {
+    console.error('Не удалось обновить проект:', err)
+  }
+}
+
 </script>
 
 <template>
