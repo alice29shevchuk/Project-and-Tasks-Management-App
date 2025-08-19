@@ -34,7 +34,7 @@ const sortConfig = ref({
 });
 
 const route = useRoute();
-const projectId = Number(route.params.id);
+const projectId = (route.params.id).toString();
 
 
 const loadTasks = async () => {

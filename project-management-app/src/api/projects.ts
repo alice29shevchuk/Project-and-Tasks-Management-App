@@ -11,7 +11,7 @@ export const fetchProjects = async (): Promise<Project[]> => {
     }
   }
 
-export const getProjectById = async (id: number): Promise<Project> => {
+export const getProjectById = async (id: string): Promise<Project> => {
   try {
     const response = await apiClient.get(`/projects/${id}`)
     return response.data
@@ -36,7 +36,7 @@ export const createProject = async (projectData: ProjectForm): Promise<Project> 
   }
 }
 
-export const updateProject = async (id: number, projectData: ProjectUpdate): Promise<Project> => {
+export const updateProject = async (id: string, projectData: ProjectUpdate): Promise<Project> => {
   try {
     const response = await apiClient.patch(`/projects/${id}`, projectData)
     return response.data
@@ -46,7 +46,7 @@ export const updateProject = async (id: number, projectData: ProjectUpdate): Pro
   }
 }
 
-export const deleteProject = async (id: number): Promise<void> => {
+export const deleteProject = async (id: string): Promise<void> => {
   try {
     await apiClient.delete(`/projects/${id}`)
   } catch (error) {

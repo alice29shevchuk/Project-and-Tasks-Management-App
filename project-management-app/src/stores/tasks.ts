@@ -8,7 +8,7 @@ export const useTasksStore = defineStore('tasks', () => {
   const allTasks = ref<Task[]>([])
   const loading = ref(false)
   
-  const loadTasks = async (projectId: number) => {
+  const loadTasks = async (projectId: string) => {
     loading.value = true
     try {
       tasks.value = await fetchTasks(projectId)
@@ -28,7 +28,7 @@ export const useTasksStore = defineStore('tasks', () => {
     }
   }  
   
-  const updateTaskOrder = async (newOrder: { id: number, order: number }[]) => {
+  const updateTaskOrder = async (newOrder: { id: string, order: number }[]) => {
     try {
       await reorderTasks(newOrder)
       
@@ -58,7 +58,7 @@ export const useTasksStore = defineStore('tasks', () => {
     }
   }
 
-  const updateTaskStatus = async (id: number, status: Task['status']) => {
+  const updateTaskStatus = async (id: string, status: Task['status']) => {
     try {
       const updated = await updateTask(id, { status })
       const taskIndex = tasks.value.findIndex(t => t.id === id)

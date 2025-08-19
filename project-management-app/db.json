@@ -1,33 +1,17 @@
 {
   "projects": [
     {
-      "id": "1",
+      "id": "77a0",
       "name": "Веб-додаток для управління проектами",
       "description": "Розробка SPA-додатка на Vue.js 3",
-      "taskCount": 4,
+      "taskCount": 3,
       "status": "active",
-      "createdAt": "2023-05-15"
+      "createdAt": "2025-08-19"
     },
     {
-      "id": "2",
+      "id": "7320",
       "name": "Мобільний додаток для задач",
       "description": "React Native додаток для керування задачами",
-      "taskCount": 4,
-      "status": "active",
-      "createdAt": "2023-04-10"
-    },
-    {
-      "id": "3",
-      "name": "CRM система для малого бізнесу",
-      "description": "Веб-платформа для управління клієнтами, угодами та завданнями",
-      "taskCount": 0,
-      "status": "active",
-      "createdAt": "2023-06-15"
-    },
-    {
-      "id": "d239",
-      "name": "Test",
-      "description": "",
       "taskCount": 0,
       "status": "active",
       "createdAt": "2025-08-19"
@@ -35,76 +19,31 @@
   ],
   "tasksCRUD": [
     {
-      "id": "1",
-      "projectId": 1,
+      "id": "b618",
       "title": "Створити структуру проекту",
-      "assignee": "Іван Петров",
-      "status": "done",
-      "dueDate": "2023-05-20",
-      "order": 4
+      "assignee": "Марія Зайцева",
+      "status": "in-progress",
+      "dueDate": "2025-08-22",
+      "projectId": "77a0",
+      "order": 3
     },
     {
-      "id": "2",
-      "projectId": 1,
+      "id": "bc05",
       "title": "Реалізувати стор для проектів",
-      "assignee": "Олена Сидорова",
-      "status": "in-progress",
-      "dueDate": "2023-05-25",
-      "order": 1
-    },
-    {
-      "id": "3",
-      "projectId": 1,
-      "title": "Налаштувати API",
-      "assignee": "Іван Петров",
-      "status": "in-progress",
-      "dueDate": "2023-05-30",
-      "order": 3
-    },
-    {
-      "id": "c796",
-      "title": "Test",
-      "assignee": "Марія Зайцева",
-      "status": "in-progress",
-      "dueDate": "2025-08-19",
-      "projectId": 1,
-      "order": 2
-    },
-    {
-      "id": "6037",
-      "title": "Test",
       "assignee": "Олег Швец",
-      "status": "in-progress",
-      "dueDate": "2025-08-23",
-      "projectId": 2,
-      "order": 3
-    },
-    {
-      "id": "ae81",
-      "title": "Test2",
-      "assignee": "Марія Зайцева",
       "status": "todo",
-      "dueDate": "2025-08-19",
-      "projectId": 2,
+      "dueDate": "2025-08-20",
+      "projectId": "77a0",
       "order": 1
     },
     {
-      "id": "217f",
-      "title": "Test 3",
-      "assignee": "",
-      "status": "todo",
-      "dueDate": "2025-08-30",
-      "projectId": 2,
+      "id": "e370",
+      "title": "Налаштувати API",
+      "assignee": "Максим Резніченко",
+      "status": "in-progress",
+      "dueDate": "2025-08-28",
+      "projectId": "77a0",
       "order": 2
-    },
-    {
-      "id": "ba4e",
-      "title": "Test4",
-      "assignee": "",
-      "status": "todo",
-      "dueDate": "2025-08-19",
-      "projectId": 2,
-      "order": 4
     }
   ]
 }

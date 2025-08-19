@@ -1,8 +1,8 @@
 export type TaskStatus = 'todo' | 'in-progress' | 'done'
 
 export interface Task {
-  id: number
-  projectId: number
+  id: string
+  projectId: string
   title: string
   assignee: string
   status: TaskStatus
@@ -15,17 +15,17 @@ export interface TaskForm {
   assignee: string
   status: TaskStatus
   dueDate: string
-  projectId: number,
+  projectId: string,
   order?: number
 }
 
 export interface TaskReorderPayload {
-  id: number
+  id: string
   order: number
 }
 
 export interface TaskStatusChangePayload {
-  id: number
+  id: string
   newStatus: TaskStatus
 }
 

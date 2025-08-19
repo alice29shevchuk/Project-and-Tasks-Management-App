@@ -11,7 +11,7 @@ const emit = defineEmits(['cancel', 'task-added'])
 const today = new Date().toISOString().split('T')[0]
 
 const route = useRoute();
-const projectId = Number(route.params.id);
+const projectId = (route.params.id).toString();
 
 const tasksStore = useTasksStore();
 const projectsStore = useProjectsStore();

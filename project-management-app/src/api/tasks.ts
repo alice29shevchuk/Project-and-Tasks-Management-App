@@ -1,7 +1,7 @@
 import apiClient from './http'
 import type { Task, TaskForm } from '@/types/task'
 
-export const fetchTasks = async (projectId: number): Promise<Task[]> => {
+export const fetchTasks = async (projectId: string): Promise<Task[]> => {
   const response = await apiClient.get('/tasksCRUD', {
     params: { projectId }
   })
@@ -13,7 +13,7 @@ export const fetchAllTasks = async (): Promise<Task[]> => {
   return response.data
 }
 
-export const getTaskById = async (id: number): Promise<Task> => {
+export const getTaskById = async (id: string): Promise<Task> => {
   const response = await apiClient.get(`/tasksCRUD/${id}`)
   return response.data
 }
@@ -23,19 +23,19 @@ export const createTask = async (taskData: TaskForm): Promise<Task> => {
   return response.data
 }
 
-export const updateTask = async (id: number, taskData: Partial<TaskForm>): Promise<Task> => {
+export const updateTask = async (id: string, taskData: Partial<TaskForm>): Promise<Task> => {
   const response = await apiClient.patch(`/tasksCRUD/${id}`, taskData)
   return response.data
 }
 
-export const deleteTask = async (id: number): Promise<void> => {
+export const deleteTask = async (id: string): Promise<void> => {
   await apiClient.delete(`/tasksCRUD/${id}`)
 }
 
 // export const reorderTasks = async (newOrder: { id: number, order: number }[]): Promise<void> => {
 //   await apiClient.patch('/tasksCRUD/reorder', { newOrder })
 // }
-export const reorderTasks = async (newOrder: { id: number, order: number }[]): Promise<void> => {
+export const reorderTasks = async (newOrder: { id: string, order: number }[]): Promise<void> => {
   await Promise.all(
     newOrder.map(task =>
       apiClient.patch(`/tasksCRUD/${task.id}`, { order: task.order })

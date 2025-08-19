@@ -30,7 +30,7 @@ export const useProjectsStore = defineStore('projects', () => {
     }
   }
 
-  const updateExistProject = async (projectId: number, projectData: ProjectUpdate) => {
+  const updateExistProject = async (projectId: string, projectData: ProjectUpdate) => {
     try {
       const updatingProject = await updateProject(projectId, projectData)
 

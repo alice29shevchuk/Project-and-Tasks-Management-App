@@ -13,7 +13,7 @@ const tasks = ref<Task[]>([]);
 const statuses = ['todo', 'in-progress', 'done'];
 
 const route = useRoute();
-const projectId = Number(route.params.id);
+const projectId = (route.params.id).toString();
 
 const tasksStore = useTasksStore()
 const projectsStore = useProjectsStore()
