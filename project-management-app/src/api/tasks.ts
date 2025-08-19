@@ -8,6 +8,11 @@ export const fetchTasks = async (projectId: number): Promise<Task[]> => {
   return response.data
 }
 
+export const fetchAllTasks = async (): Promise<Task[]> => {
+  const response = await apiClient.get('/tasksCRUD')
+  return response.data
+}
+
 export const getTaskById = async (id: number): Promise<Task> => {
   const response = await apiClient.get(`/tasksCRUD/${id}`)
   return response.data

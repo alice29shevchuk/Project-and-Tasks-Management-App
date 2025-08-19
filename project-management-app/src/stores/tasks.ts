@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { Task, TaskForm } from '@/types/task'
-import { fetchTasks, reorderTasks, createTask, updateTask } from '@/api/tasks'
+import { fetchTasks, reorderTasks, createTask, updateTask, fetchAllTasks } from '@/api/tasks'
 
 export const useTasksStore = defineStore('tasks', () => {
   const tasks = ref<Task[]>([])
+  const allTasks = ref<Task[]>([])
   const loading = ref(false)
   
   const loadTasks = async (projectId: number) => {
@@ -16,6 +17,16 @@ export const useTasksStore = defineStore('tasks', () => {
       loading.value = false
     }
   }
+
+  const loadAllTasks = async () => {
+    loading.value = true
+    try {
+      allTasks.value = await fetchAllTasks()
+      allTasks.value.sort((a, b) => a.order - b.order)
+    } finally {
+      loading.value = false
+    }
+  }  
   
   const updateTaskOrder = async (newOrder: { id: number, order: number }[]) => {
     try {
@@ -64,10 +75,12 @@ export const useTasksStore = defineStore('tasks', () => {
   
   return {
     tasks,
+    allTasks,
     loading,
     loadTasks,
     updateTaskOrder,
     createNewTask,
-    updateTaskStatus
+    updateTaskStatus,
+    loadAllTasks
   }
 })

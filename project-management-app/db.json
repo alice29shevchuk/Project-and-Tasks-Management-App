@@ -12,8 +12,8 @@
       "id": "2",
       "name": "Мобільний додаток для задач",
       "description": "React Native додаток для керування задачами",
-      "taskCount": 2,
-      "status": "completed",
+      "taskCount": 4,
+      "status": "active",
       "createdAt": "2023-04-10"
     },
     {
@@ -23,6 +23,14 @@
       "taskCount": 0,
       "status": "active",
       "createdAt": "2023-06-15"
+    },
+    {
+      "id": "d239",
+      "name": "Test",
+      "description": "",
+      "taskCount": 0,
+      "status": "active",
+      "createdAt": "2025-08-19"
     }
   ],
   "tasksCRUD": [
@@ -31,7 +39,7 @@
       "projectId": 1,
       "title": "Створити структуру проекту",
       "assignee": "Іван Петров",
-      "status": "in-progress",
+      "status": "done",
       "dueDate": "2023-05-20",
       "order": 4
     },
@@ -42,22 +50,22 @@
       "assignee": "Олена Сидорова",
       "status": "in-progress",
       "dueDate": "2023-05-25",
-      "order": 3
+      "order": 1
     },
     {
       "id": "3",
       "projectId": 1,
       "title": "Налаштувати API",
       "assignee": "Іван Петров",
-      "status": "todo",
+      "status": "in-progress",
       "dueDate": "2023-05-30",
-      "order": 1
+      "order": 3
     },
     {
       "id": "c796",
       "title": "Test",
       "assignee": "Марія Зайцева",
-      "status": "todo",
+      "status": "in-progress",
       "dueDate": "2025-08-19",
       "projectId": 1,
       "order": 2
@@ -66,19 +74,37 @@
       "id": "6037",
       "title": "Test",
       "assignee": "Олег Швец",
-      "status": "done",
+      "status": "in-progress",
       "dueDate": "2025-08-23",
       "projectId": 2,
-      "order": 1
+      "order": 3
     },
     {
       "id": "ae81",
       "title": "Test2",
       "assignee": "Марія Зайцева",
-      "status": "done",
+      "status": "todo",
       "dueDate": "2025-08-19",
       "projectId": 2,
+      "order": 1
+    },
+    {
+      "id": "217f",
+      "title": "Test 3",
+      "assignee": "",
+      "status": "todo",
+      "dueDate": "2025-08-30",
+      "projectId": 2,
       "order": 2
+    },
+    {
+      "id": "ba4e",
+      "title": "Test4",
+      "assignee": "",
+      "status": "todo",
+      "dueDate": "2025-08-19",
+      "projectId": 2,
+      "order": 4
     }
   ]
 }
