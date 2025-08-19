@@ -15,7 +15,7 @@ export interface TaskForm {
   assignee: string
   status: TaskStatus
   dueDate: string
-  projectId?: number
+  projectId: number
 }
 
 export interface TaskReorderPayload {
