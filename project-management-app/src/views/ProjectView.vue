@@ -1,9 +1,22 @@
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, onMounted, watch } from "vue"
 import TaskTable from '@/components/tasks/TaskTable.vue'
 import TaskBoard from '@/components/tasks/TaskBoard.vue'
 
+const VIEW_MODE_KEY = 'project-view-mode'
+
 const viewMode = ref<'table' | 'board'>('table')
+
+onMounted(() => {
+  const saved = localStorage.getItem(VIEW_MODE_KEY)
+  if (saved === 'table' || saved === 'board') {
+    viewMode.value = saved
+  }
+})
+
+watch(viewMode, (newValue) => {
+  localStorage.setItem(VIEW_MODE_KEY, newValue)
+})
 </script>
 
 <template>

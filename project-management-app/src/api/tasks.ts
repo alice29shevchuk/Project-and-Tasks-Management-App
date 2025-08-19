@@ -27,6 +27,13 @@ export const deleteTask = async (id: number): Promise<void> => {
   await apiClient.delete(`/tasksCRUD/${id}`)
 }
 
+// export const reorderTasks = async (newOrder: { id: number, order: number }[]): Promise<void> => {
+//   await apiClient.patch('/tasksCRUD/reorder', { newOrder })
+// }
 export const reorderTasks = async (newOrder: { id: number, order: number }[]): Promise<void> => {
-  await apiClient.patch('/tasksCRUD/reorder', { newOrder })
+  await Promise.all(
+    newOrder.map(task =>
+      apiClient.patch(`/tasksCRUD/${task.id}`, { order: task.order })
+    )
+  )
 }

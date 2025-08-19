@@ -103,6 +103,14 @@
       "taskCount": 2,
       "status": "completed",
       "createdAt": "2023-04-18"
+    },
+    {
+      "id": "5628",
+      "name": "Test",
+      "description": "desc",
+      "taskCount": 0,
+      "status": "active",
+      "createdAt": "2025-08-19"
     }
   ],
   "tasksCRUD": [
@@ -111,18 +119,18 @@
       "projectId": 1,
       "title": "Створити структуру проекту",
       "assignee": "Іван Петров",
-      "status": "done",
+      "status": "in-progress",
       "dueDate": "2023-05-20",
-      "order": 1
+      "order": 3
     },
     {
       "id": "2",
       "projectId": 1,
       "title": "Реалізувати стор для проектів",
       "assignee": "Олена Сидорова",
-      "status": "in-progress",
+      "status": "done",
       "dueDate": "2023-05-25",
-      "order": 2
+      "order": 4
     },
     {
       "id": "3",
@@ -131,23 +139,34 @@
       "assignee": "Іван Петров",
       "status": "todo",
       "dueDate": "2023-05-30",
-      "order": 3
+      "order": 2
     },
     {
-      "id": "c9f6",
-      "title": "hfhfgh",
-      "assignee": "Марія Зайцева",
-      "status": "in-progress",
-      "dueDate": "2025-08-19",
-      "projectId": 1
-    },
-    {
-      "id": "c2c7",
+      "id": "08a8",
       "title": "Test",
-      "assignee": "Олег Швец",
+      "assignee": "Марія Зайцева",
       "status": "todo",
       "dueDate": "2025-08-19",
-      "projectId": 1
+      "projectId": 1,
+      "order": 1
+    },
+    {
+      "id": "215a",
+      "title": "Test",
+      "assignee": "Марія Зайцева",
+      "status": "done",
+      "dueDate": "2025-08-21",
+      "projectId": 2,
+      "order": 1
+    },
+    {
+      "id": "8bf1",
+      "title": "Test 2",
+      "assignee": "Олег Швец",
+      "status": "in-progress",
+      "dueDate": "2025-08-19",
+      "projectId": 2,
+      "order": 2
     }
   ]
 }

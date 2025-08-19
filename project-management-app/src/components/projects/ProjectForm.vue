@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import apiClient from '@/api/http'
+import { useProjectsStore } from '@/stores/projects'
 
 const emit = defineEmits(['cancel', 'project-added'])
+
+const projectsStore = useProjectsStore()
 
 const form = ref({
   name: '',
@@ -20,9 +22,8 @@ const submitForm = async () => {
 
   loading.value = true
   try {
-    await apiClient.post('/projects', {
+    await projectsStore.addProject({
       ...form.value,
-      createdAt: new Date().toISOString().split('T')[0]
     })
     emit('project-added')
     form.value = { name: '', description: '', taskCount: 0, status: 'active' }

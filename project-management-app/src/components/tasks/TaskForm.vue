@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import apiClient from '@/api/http'
-import { createTask } from '@/api/tasks'
 import type { TaskForm } from '@/types/task'
 import { useRoute } from 'vue-router'
+import { useTasksStore } from '@/stores/tasks'
 
 const emit = defineEmits(['cancel', 'task-added'])
 
@@ -11,6 +10,8 @@ const today = new Date().toISOString().split('T')[0]
 
 const route = useRoute();
 const projectId = Number(route.params.id);
+
+const tasksStore = useTasksStore();
 
 const form = ref<TaskForm>({
   title: '',
@@ -56,7 +57,12 @@ const submitForm = async () => {
 
   loading.value = true
   try {
-    await createTask(form.value)
+    // await createTask(form.value)
+    const maxOrder = tasksStore.tasks.length
+      ? Math.max(...tasksStore.tasks.map(t => t.order))
+      : 0
+    const newTaskData = { ...form.value, order: maxOrder + 1 }
+    await tasksStore.createNewTask(newTaskData)
 
     emit('task-added')
     form.value = { title: '', assignee: '', status: 'todo', dueDate: today, projectId: projectId }
